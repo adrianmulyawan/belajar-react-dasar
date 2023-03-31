@@ -1,9 +1,10 @@
-import YoutubeComponent from "../../components/YoutubeComponent/youtube.component";
+import ProductComponent from "../../components/Product/product.component";
+// import YoutubeComponent from "../../components/YoutubeComponent/youtube.component";
 
 const HomeContainer = () => {
   return (
     <>
-      <h1>Youtube</h1>
+      {/* <h1>Youtube Component</h1>
       <hr />
       <YoutubeComponent 
         imageThumb='https://i.ytimg.com/an_webp/URt28V-20sA/mqdefault_6s.webp?du=3000&sqp=CICDlaEG&rs=AOn4CLAaFfIkQ3-amWljiJM_YiC8ng7Z_w'
@@ -19,7 +20,8 @@ const HomeContainer = () => {
       />
       <YoutubeComponent 
         imageThumb='https://i.ytimg.com/an_webp/5g75ioXggQw/mqdefault_6s.webp?du=3000&sqp=COiUlaEG&rs=AOn4CLDgismDJMw4P-AhCqlHmq-8pVR_EA'
-      />
+      /> */}
+      <ProductComponent />
     </>
   )
 };

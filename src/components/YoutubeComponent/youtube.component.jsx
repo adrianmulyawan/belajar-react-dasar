@@ -7,8 +7,12 @@ const YoutubeComponent = (props) => {
         <img src={ props.imageThumb } alt="img-thumbnail" />
         <p className="time">{ props.time || '17:00'}</p>
       </div>
-      <p className="title">{ props.title || 'Ini Adalah Default Title Video Youtube' }</p>
-      <p className="desc">{ props.description || 'Ini Adalah Default Description' }</p>
+      <p className="title">
+        { props.title || 'Ini Adalah Default Title Video Youtube' }
+      </p>
+      <p className="desc">
+        { props.description || 'Ini Adalah Default Description' }
+      </p>
     </div>
   )
 };
