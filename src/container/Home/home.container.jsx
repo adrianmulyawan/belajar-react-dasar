@@ -1,4 +1,5 @@
-import ProductComponent from "../../components/Product/product.component";
+import LifeCycleComponent1 from "../../components/LifeCycle/life-cycle-1.component";
+// import ProductComponent from "../../components/Product/product.component";
 // import YoutubeComponent from "../../components/YoutubeComponent/youtube.component";
 
 const HomeContainer = () => {
@@ -21,7 +22,12 @@ const HomeContainer = () => {
       <YoutubeComponent 
         imageThumb='https://i.ytimg.com/an_webp/5g75ioXggQw/mqdefault_6s.webp?du=3000&sqp=COiUlaEG&rs=AOn4CLDgismDJMw4P-AhCqlHmq-8pVR_EA'
       /> */}
-      <ProductComponent />
+      {/* <h1>Counting Component</h1>
+      <hr />
+      <ProductComponent /> */}
+      <h1>Lifecycle Component</h1>
+      <hr />
+      <LifeCycleComponent1 />
     </>
   )
 };
