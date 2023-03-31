@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import troleyImage from '../../assets/shopping_cart.png'
-import CardProductComponent from '../CardProduct/card-product.component';
+import CardProductComponent from '../CardProductChild/card-product.component';
 import './product.component.css';
 
 const ProductComponent = () => {

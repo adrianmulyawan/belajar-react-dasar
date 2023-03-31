@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../Product/product.component.css';
+import '../ProductParent/product.component.css';
 
 const CardProductComponent = (props) => {
   const [order, setOrder] = useState({
