@@ -1,4 +1,6 @@
-import LifeCycleComponent1 from "../../components/LifeCycle/life-cycle-1.component";
+import BlogPostComponent from "../../components/CallAPI/BlogPost/blog-post.component";
+import NavbarComponent from "../../components/navbar.component";
+// import LifeCycleComponent1 from "../../components/LifeCycle/life-cycle-1.component";
 // import ProductComponent from "../../components/Product/product.component";
 // import YoutubeComponent from "../../components/YoutubeComponent/youtube.component";
 
@@ -25,9 +27,11 @@ const HomeContainer = () => {
       {/* <h1>Counting Component</h1>
       <hr />
       <ProductComponent /> */}
-      <h1>Lifecycle Component</h1>
+      {/* <h1>Lifecycle Component</h1>
       <hr />
-      <LifeCycleComponent1 />
+      <LifeCycleComponent1 /> */}
+      <NavbarComponent />
+      <BlogPostComponent />
     </>
   )
 };
