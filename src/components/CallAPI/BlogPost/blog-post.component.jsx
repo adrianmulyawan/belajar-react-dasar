@@ -16,10 +16,11 @@ const BlogPostComponent = () => {
 
   // > Menggunakan Axios
   const getDataPost = async () => {
-    const items = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    console.info(items);
+    // const items = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    const items = await axios.get('http://localhost:3004/posts');
+    // console.info(items);
     const item = await items.data;
-    console.info(item);
+    // console.info(item);
     // console.info(item);
     setPosts(item);
   }
@@ -43,6 +44,7 @@ const BlogPostComponent = () => {
                 return <PostCardComponent 
                   key={ post.id } 
                   title={ post.title }
+                  // author= { post.author }
                   body={ post.body }
                 />
               })

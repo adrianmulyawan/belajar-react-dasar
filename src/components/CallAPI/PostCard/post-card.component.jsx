@@ -1,5 +1,5 @@
 const PostCardComponent = (props) => {
-  const { keygen, title, body } = props;
+  const { keygen, title, body, author } = props;
   return (
     <>
       <div className="col-lg-3 col-md-4 col-sm-12 my-2" key={ keygen }>
@@ -9,6 +9,9 @@ const PostCardComponent = (props) => {
             <h5 className="card-title">
               { title }
             </h5>
+            <p className="text-muted">
+              Author: Pablo
+            </p>
             <p className="card-text">
               { body }
             </p>
