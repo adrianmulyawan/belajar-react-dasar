@@ -25,8 +25,8 @@ const BlogPostComponent = () => {
   // > Menggunakan Axios
   // => Mendapatkan seluruh data
   const getDataPost = async () => {
-    // const items = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    const items = await axios.get('http://localhost:3004/posts');
+    // > Sort data dari id terbesar -> terkecil
+    const items = await axios.get('http://localhost:3004/posts?_sort=id&_order=desc');
     // console.info(items);
     const item = await items.data;
     // console.info(item);
@@ -35,6 +35,8 @@ const BlogPostComponent = () => {
     setLoading(true);
   }
 
+  // > Hooks useEffect
+  // => Akan dijalankan saat pertama kali halaman dirender
   let i = 0;
   useEffect(() => {
     if (i === 0) {
@@ -50,21 +52,47 @@ const BlogPostComponent = () => {
     getDataPost();
     setMessage('Data Berhasil Dihapus');
   };
+  // > Method Tambah Data 
+  const handleInsertPost = async () => {
+    try {
+      // > Simpan data ke db
+      await axios.post('http://localhost:3004/posts', formPost);
+
+      // > Set Message dan setFormPost
+      setMessage('Berhasil Menambahkan Data Baru!');
+      setFormPost('');
+
+      // > tampilkan pemanggilan data post
+      getDataPost();
+    } catch (error) {
+      alert(error);
+    }
+  }
 
   // > Method Handle Post (Insert New Data)
   // => Mengambil Nilai Dari Input
   const handleFormChange = (e) => {
-    setFormPost({
-      ...formPost,
-      // e.target.name => refrences ke name input form
-      // e.target.value => refrence ke nilai dari input formnya
-      [e.target.name]: e.target.value
+    // > Generate waktu sekarang dalam milisecond (untuk jadi id)
+    let timeStamp = new Date().getTime();
+
+    // > Update state formPost
+    setFormPost((data) => {
+      return {
+        ...data,
+        id: timeStamp,
+        // e.target.name => refrences ke name input form
+        // e.target.value => refrence ke nilai dari input formnya
+        [e.target.name]: e.target.value
+      }
     });
   }
   // => Handle Saat Form di Submit
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.info(formPost);
+    // console.info(formPost);
+
+    // > Insert data
+    handleInsertPost();
   }
 
   return (
@@ -88,7 +116,7 @@ const BlogPostComponent = () => {
 
         {/* Alert (Dijalankan ketika data dihapus) */}
         {
-          message ? ( <div className="alert alert-danger alert-dismissible fade show" role="alert">
+          message ? ( <div className="alert alert-primary alert-dismissible fade show" role="alert">
             <strong>{ message }</strong>
             <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div> ) : ''
