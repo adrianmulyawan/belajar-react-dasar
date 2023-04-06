@@ -4,6 +4,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const BlogPostComponent = () => {
+  const [formPost, setFormPost] = useState({
+    userId: 1,
+    id: 101,
+    title: '',
+    body: ''
+  });
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,6 +23,7 @@ const BlogPostComponent = () => {
   // }
 
   // > Menggunakan Axios
+  // => Mendapatkan seluruh data
   const getDataPost = async () => {
     // const items = await axios.get('https://jsonplaceholder.typicode.com/posts');
     const items = await axios.get('http://localhost:3004/posts');
@@ -44,10 +51,41 @@ const BlogPostComponent = () => {
     setMessage('Data Berhasil Dihapus');
   };
 
+  // > Method Handle Post (Insert New Data)
+  // => Mengambil Nilai Dari Input
+  const handleFormChange = (e) => {
+    setFormPost({
+      ...formPost,
+      // e.target.name => refrences ke name input form
+      // e.target.value => refrence ke nilai dari input formnya
+      [e.target.name]: e.target.value
+    });
+  }
+  // => Handle Saat Form di Submit
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.info(formPost);
+  }
+
   return (
     <>
       <div className="container-fluid mt-3">
         <h1>Blog Post</h1>
+
+        <div className="card p-3 my-3">
+          <form onSubmit={ handleFormSubmit }>
+            <div className="mb-3">
+              <label htmlFor="title" className="form-label">Title</label>
+              <input name="title" type="text" className="form-control" id="title" onChange={ handleFormChange } />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="body" className="form-label">Blog Content</label>
+              <textarea name="body" className="form-control" id="body" rows="5" onChange={ handleFormChange }></textarea>
+            </div>
+            <button type="submit" className="btn btn-primary float-end">Simpan Data</button>
+          </form>
+        </div>
+
         {/* Alert (Dijalankan ketika data dihapus) */}
         {
           message ? ( <div className="alert alert-danger alert-dismissible fade show" role="alert">
@@ -59,6 +97,7 @@ const BlogPostComponent = () => {
         {
           loading === false ? <p><i>Data Loading</i></p> : ''
         }
+
         <div className="card-post">
           <div className="row justify-content-center">
             {
