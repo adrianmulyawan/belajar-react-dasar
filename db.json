@@ -572,20 +572,21 @@
     },
     {
       "userId": 10,
-      "id": 99,
-      "title": "temporibus sit alias delectus eligendi possimus magni",
-      "body": "quo deleniti praesentium dicta non quod\naut est molestias\nmolestias et officia quis nihil\nitaque dolorem quia"
-    },
-    {
-      "userId": 10,
       "id": 100,
-      "title": "at nam consequatur ea labore ea harum",
-      "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
+      "title": "at nam consequatur ea labore ea harum update",
+      "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut update"
     },
     {
-      "id": 1680769540464,
-      "title": "Coba tambah data baru",
-      "body": "ini saya udah coba tambah data baru"
+      "userId": 1,
+      "id": 1680781986686,
+      "title": "ini aku punya data baru aku edit",
+      "body": "ini body untuk daya naru oke edit"
+    },
+    {
+      "userId": 1,
+      "id": 1680782192113,
+      "title": "tambah data baru lagi aku edit ya",
+      "body": "oke tambahlah tuh dan editlah"
     }
   ],
   "comments": [],

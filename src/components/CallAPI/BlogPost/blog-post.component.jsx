@@ -10,6 +10,7 @@ const BlogPostComponent = () => {
     title: '',
     body: ''
   });
+  const [update, setUpdate] = useState(false);
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -52,6 +53,41 @@ const BlogPostComponent = () => {
     getDataPost();
     setMessage('Data Berhasil Dihapus');
   };
+  
+  // > Method Update Data
+  // => Nangkap data yang akan diedit dan ubah state update = true
+  const handleUpdatePost = async (data) => {
+    console.info(data, 'ini data yang akan diupdate');
+
+    // > update nilai 'formPost' menggunakan data yang akan diedit
+    // => Saat tekan button edit makan nilainya akan diupdate
+    // => Dengan nilai dari post tsb
+    setFormPost(data);
+
+    // > Update state update menjadi true
+    setUpdate(true);
+  };
+  // => Proses update
+  const updatePost = async () => {
+    // > Update data
+    await axios.put(`http://localhost:3004/posts/${formPost.id}`, formPost);
+
+    // > Set Message dan setFormPost
+    setMessage('Berhasil Mengupdate Data!');
+    setFormPost({
+      userId: 1,
+      id: 101,
+      title: '',
+      body: ''
+    });
+
+    // > Set State Update = false
+    setUpdate(false);
+
+    // > tampilkan pemanggilan data post
+    getDataPost();
+  }
+
   // > Method Tambah Data 
   const handleInsertPost = async () => {
     try {
@@ -60,7 +96,12 @@ const BlogPostComponent = () => {
 
       // > Set Message dan setFormPost
       setMessage('Berhasil Menambahkan Data Baru!');
-      setFormPost('');
+      setFormPost({
+        userId: 1,
+        id: 101,
+        title: '',
+        body: ''
+      });
 
       // > tampilkan pemanggilan data post
       getDataPost();
@@ -72,14 +113,19 @@ const BlogPostComponent = () => {
   // > Method Handle Post (Insert New Data)
   // => Mengambil Nilai Dari Input
   const handleFormChange = (e) => {
-    // > Generate waktu sekarang dalam milisecond (untuk jadi id)
-    let timeStamp = new Date().getTime();
+    let timeStamp = '';
+
+    // > Jika state update = false, baru bisa tambah id
+    if (update === false) {
+      // > Generate waktu sekarang dalam milisecond (untuk jadi id)
+      timeStamp = new Date().getTime();
+    }
 
     // > Update state formPost
     setFormPost((data) => {
       return {
         ...data,
-        id: timeStamp,
+        id: timeStamp || data.id,
         // e.target.name => refrences ke name input form
         // e.target.value => refrence ke nilai dari input formnya
         [e.target.name]: e.target.value
@@ -91,8 +137,14 @@ const BlogPostComponent = () => {
     e.preventDefault();
     // console.info(formPost);
 
-    // > Insert data
-    handleInsertPost();
+    // > Cek apakah state update = true
+    if (update === true) {
+      // > Update Data
+      updatePost();
+    } else {
+      // > Insert data
+      handleInsertPost();
+    }
   }
 
   return (
@@ -100,17 +152,22 @@ const BlogPostComponent = () => {
       <div className="container-fluid mt-3">
         <h1>Blog Post</h1>
 
+        {/* Form Tambah Data Post */}
         <div className="card p-3 my-3">
           <form onSubmit={ handleFormSubmit }>
             <div className="mb-3">
               <label htmlFor="title" className="form-label">Title</label>
-              <input name="title" type="text" className="form-control" id="title" onChange={ handleFormChange } />
+              <input name="title" type="text" className="form-control" id="title" onChange={ handleFormChange } placeholder="Judul Post" value={ formPost ? formPost.title : '' } />
             </div>
             <div className="mb-3">
               <label htmlFor="body" className="form-label">Blog Content</label>
-              <textarea name="body" className="form-control" id="body" rows="5" onChange={ handleFormChange }></textarea>
+              <textarea name="body" className="form-control" id="body" rows="5" onChange={ handleFormChange } placeholder="Content Post" value={ formPost ? formPost.body : '' }></textarea>
             </div>
-            <button type="submit" className="btn btn-primary float-end">Simpan Data</button>
+            <button type="submit" className="btn btn-primary float-end">
+              {
+                update === true ? 'Update Data' : 'Simpan Data'
+              }
+            </button>
           </form>
         </div>
 
@@ -136,6 +193,7 @@ const BlogPostComponent = () => {
                   // body={ post.body }
                   data={ post }
                   removePost={ handleRemovePost }
+                  updatePost={ handleUpdatePost }
                 />
               })
             }

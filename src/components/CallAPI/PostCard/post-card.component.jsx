@@ -1,5 +1,5 @@
 const PostCardComponent = (props) => {
-  const { data, removePost } = props;
+  const { data, removePost, updatePost } = props;
 
   // console.info(data, 'ini data');
   
@@ -18,9 +18,14 @@ const PostCardComponent = (props) => {
             <p className="card-text">
               { data.body }
             </p>
-            <button className="badge bg-danger float-end text-decoration-none px-4 py-2" onClick={ () => removePost(data.id) }>
-              Delete
-            </button>
+            <div className="button">
+              <button className="badge bg-danger text-decoration-none px-4 py-2 float-end" onClick={ () => removePost(data.id) }>
+                Delete
+              </button>
+              <button className="badge bg-success text-decoration-none px-4 py-2 mx-2 float-end" onClick={ () => updatePost(data) }>
+                Edit
+              </button>
+            </div>
           </div>
         </div>
       </div>
