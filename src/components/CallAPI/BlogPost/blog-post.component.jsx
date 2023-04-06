@@ -47,7 +47,7 @@ const BlogPostComponent = () => {
   }, [i]);
 
   // > Method Hapus Data
-  const handleRemovePost = async (data) => {
+  const removeDataPost = async (data) => {
     console.info(data, 'ini ID');
     await axios.delete(`http://localhost:3004/posts/${data}`);
     getDataPost();
@@ -89,7 +89,7 @@ const BlogPostComponent = () => {
   }
 
   // > Method Tambah Data 
-  const handleInsertPost = async () => {
+  const addDataPost = async () => {
     try {
       // > Simpan data ke db
       await axios.post('http://localhost:3004/posts', formPost);
@@ -143,7 +143,7 @@ const BlogPostComponent = () => {
       updatePost();
     } else {
       // > Insert data
-      handleInsertPost();
+      addDataPost();
     }
   }
 
@@ -192,7 +192,7 @@ const BlogPostComponent = () => {
                   // title={ post.title }
                   // body={ post.body }
                   data={ post }
-                  removePost={ handleRemovePost }
+                  removePost={ removeDataPost }
                   updatePost={ handleUpdatePost }
                 />
               })
