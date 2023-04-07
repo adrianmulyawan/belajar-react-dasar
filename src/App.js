@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import HomeContainer from './container/Home/home.container';
-import ProductContainer from './container/Product/product.container';
-import ContentContainer from './container/Content/content.container';
+import HomeContainer from './pages/Home/home.container';
+import ProductContainer from './pages/Product/product.container';
+import ContentContainer from './pages/Content/content.container';
 
 function App() {
   return (
