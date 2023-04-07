@@ -1,4 +1,4 @@
-.header {
+.header-product {
   background: #68c93e;
   display: flex;
   width: 400px;
@@ -33,12 +33,12 @@
   left: -13px;
 }
 
-.header .logo img {
+.header-product .logo img {
   margin: 0;
   margin-top: 15px;
 }
 
-.card {
+.card-product {
   width: 340px;
   height: 495px;
   box-sizing: content-box;

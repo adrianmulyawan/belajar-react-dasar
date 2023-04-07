@@ -45,7 +45,7 @@ const ProductComponent = () => {
 
   return (
     <Fragment>
-      <div className="header">
+      <div className="header-product">
         <div className="logo">
           <img src="https://etanee.id/static/media/XFoodBlue.6ec62d26.png" alt="img-logo" style={{ width: 100 }} />
         </div>

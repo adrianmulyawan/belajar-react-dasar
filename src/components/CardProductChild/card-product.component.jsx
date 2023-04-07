@@ -41,7 +41,7 @@ const CardProductComponent = (props) => {
 
   return (
     <>
-      <div className="card"> 
+      <div className="card-product"> 
         <div className="img-thumb-prod">
           <img src="https://images.tokopedia.net/img/cache/500-square/product-1/2020/8/22/101342057/101342057_68f4d174-988b-41b7-98e8-3e03a5cfb45e_700_700" alt="img-product" />
         </div>
