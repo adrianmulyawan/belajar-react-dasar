@@ -21,6 +21,9 @@ const NavbarComponent = () => {
               <li className="nav-item">
                 <Link to="/content" className="nav-link">Content</Link>
               </li>
+              <li className="nav-item">
+                <Link to="/lifecycle" className="nav-link">Lifecycle</Link>
+              </li>
             </ul>
           </div>
         </div>
