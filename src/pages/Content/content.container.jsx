@@ -3,7 +3,7 @@ import YoutubeComponent from "../../components/YoutubeDynamicComponent/youtube.c
 // import LifeCycleComponent1 from "../../components/LifeCycle/life-cycle-1.component";
 // import ProductComponent from "../../components/Product/product.component";
 
-const ContentContainer = () => {
+const ContentPage = () => {
   return (
     <>
       <NavbarComponent />
@@ -26,4 +26,4 @@ const ContentContainer = () => {
   )
 };
 
-export default ContentContainer;
+export default ContentPage;

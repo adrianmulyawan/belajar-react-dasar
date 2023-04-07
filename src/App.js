@@ -1,17 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import HomeContainer from './pages/Home/home.container';
-import ProductContainer from './pages/Product/product.container';
-import ContentContainer from './pages/Content/content.container';
+import HomePage from './pages/Home/home.container';
+import ProductPage from './pages/Product/product.container';
+import ContentPagex from './pages/Content/content.container';
 
 function App() {
   return (
    <>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={ <HomeContainer /> } />
-        <Route path='/product' element={ <ProductContainer /> } />
-        <Route path='/content' element={ <ContentContainer /> } />
+        <Route path='/' element={ <HomePage /> } />
+        <Route path='/product' element={ <ProductPage /> } />
+        <Route path='/content' element={ <ContentPagex /> } />
       </Routes>
     </BrowserRouter>
    </>

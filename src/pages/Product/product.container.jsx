@@ -1,7 +1,7 @@
 import ProductComponent from "../../components/ProductParent/product.component";
 import NavbarComponent from "../../components/navbar.component";
 
-const ProductContainer = () => {
+const ProductPage = () => {
   return (
     <>
       <NavbarComponent />
@@ -10,4 +10,4 @@ const ProductContainer = () => {
   )
 };
 
-export default ProductContainer;
+export default ProductPage;
