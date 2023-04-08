@@ -1,6 +1,7 @@
-const PostCardComponent = (props) => {
-  const { data, removePost, updatePost } = props;
+import './post-card.component.css';
 
+const PostCardComponent = (props) => {
+  const { data, removePost, updatePost, detailPost } = props;
   // console.info(data, 'ini data');
   
   return (
@@ -9,7 +10,7 @@ const PostCardComponent = (props) => {
         <div className="card">
           <img src="https://random.imagecdn.app/640/453" className="card-img-top" alt="banner-img" />
           <div className="card-body">
-            <h5 className="card-title">
+            <h5 className="card-title card-link" onClick={ () => detailPost(data.id) }>
               { data.title }
             </h5>
             <p className="text-muted">

@@ -2,6 +2,7 @@ import axios from "axios";
 import PostCardComponent from "../PostCard/post-card.component";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const BlogPostComponent = () => {
   const [formPost, setFormPost] = useState({
@@ -14,14 +15,6 @@ const BlogPostComponent = () => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-
-  // > Menggunakan Fetch API
-  // const getDataPost = async () => {
-  //   const items = await fetch('https://jsonplaceholder.typicode.com/posts');
-  //   const item = await items.json();
-  //   // console.info(item);
-  //   setPosts(item);
-  // }
 
   // > Menggunakan Axios
   // => Mendapatkan seluruh data
@@ -145,7 +138,17 @@ const BlogPostComponent = () => {
       // > Insert data
       addDataPost();
     }
-  }
+  } 
+
+  // > Method Handle Detail Post
+  // => Method 'useNavigate()' kita instance ke variable navigate
+  // => Dan akan mengarahkan user kehalaman detail blog
+  const navigate = useNavigate();
+  const handleDetailPost = (data) => {
+    console.info(data, 'INI ID');
+
+    navigate(`blog/detail/${data}`);
+  };
 
   return (
     <>
@@ -194,6 +197,7 @@ const BlogPostComponent = () => {
                   data={ post }
                   removePost={ removeDataPost }
                   updatePost={ handleUpdatePost }
+                  detailPost={ handleDetailPost }
                 />
               })
             }
