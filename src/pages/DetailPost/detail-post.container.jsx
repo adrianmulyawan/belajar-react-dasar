@@ -14,7 +14,13 @@ const DetailPostPage = () => {
   const getDetailPost = async () => {
     const items = await axios.get(`http://localhost:3004/posts/${id}`);
     const item = items.data;
-    setPost(item);
+    setPost((data) => {
+      return {
+        ...data,
+        title: item.title,
+        body: item.body
+      }
+    });
     console.info(item)
   };
 
